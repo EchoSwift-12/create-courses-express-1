@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require("cors")
+const coursesRouter = require('./routes/coursesRoutes')
 
 const app = express()
 app.use(cors({
@@ -10,6 +11,7 @@ app.use(cors({
     exposedHeaders: "*"
 }))
 app.use(express.json())
+app.use('/courses', coursesRouter)
 
 const connectToDbAndStart = async ()=>{
     await mongoose.connect('mongodb+srv://amtulrahmansadiya:eIK1BZVHr27CUmtC@cluster0.ybjbtjb.mongodb.net/students-courses-db?retryWrites=true&w=majority')
